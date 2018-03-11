@@ -15,7 +15,9 @@ const getAllMessages = (response) => {
 };
 
 const addMessage = (newMessage, response) => {
-  return {...messages, newMessage };
+  response.writeHead(201, { 'Content-Type': 'text/plain' });
+  response.write(JSON.stringify(newMessage));
+  response.end();
 };
 
 server.listen(3000, () => {
